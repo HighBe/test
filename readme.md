@@ -41,6 +41,18 @@ contract C {
         return s;
     }
 }
-
-
 ```
+## 未定义行为
+悬空引用
+```
+contract C {
+    bytes x = "012345678901234567890123456789";
+    function test() external returns(uint) {
+        (x.push(), x.push()) = (0x01, 0x02);
+        return x.length;
+    }
+}
+```
+
+
+
